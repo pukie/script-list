@@ -1,4 +1,4 @@
-.directive('symbolInput', function() {
+.directive('symbolInput', function($browser) {
     return {
         require: 'ngModel',
         link: function($scope, $element, $attrs, ngModelCtrl) {
