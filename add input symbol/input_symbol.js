@@ -1,6 +1,7 @@
 .directive('symbolInput', function($browser) {
     return {
         require: 'ngModel',
+        priority: 1,
         link: function($scope, $element, $attrs, ngModelCtrl) {
             var listener = function() {
                 $element.val($element.val().replace(/[^0-9]/g, '')+' '+$attrs.symbol);
