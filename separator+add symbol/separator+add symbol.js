@@ -1,18 +1,13 @@
 var fessmodule = angular.module('myModule', []);
 
 fessmodule.controller('fessCntrl', function ($scope) {
-    $scope.test = 0;
-
-}) var fessmodule = angular.module('myModule', []);
-
-fessmodule.controller('fessCntrl', function ($scope) {
-    $scope.test = 3.232323;
+    $scope.test = 123;
 
 }) .directive('symbolInput', function($browser) {
         return {
-            	require: 'ngModel',
-           	 //priority: 1,
-		link: function($scope, $element, $attrs, ngModelCtrl) {
+            require: 'ngModel',
+            //priority: 1,
+ link: function($scope, $element, $attrs, ngModelCtrl) {
 
                 var listener = function() {
 
@@ -36,8 +31,9 @@ fessmodule.controller('fessCntrl', function ($scope) {
                     /* jshint ignore:end */
                 };
                 ngModelCtrl.$parsers.push(function(viewValue) {
+                    if(!viewValue){ return 0;}
                     var value = viewValue.replace(/[^0-9.]/g, '');
-                    return parseFloat($attrs.symbol=='%' ? value/100 : value).toFixed(4) ;
+                    return parseFloat($attrs.symbol=='%' ? value/100 : value).toFixed(2) ;
                 });
                 ngModelCtrl.$render = function() {
 
